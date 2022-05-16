@@ -13,15 +13,15 @@ if (typeof Element.prototype.clearChildren === 'undefined') {
 }
 
 const switchView = async () => {
-    const btn = document.getElementById("btn-viewSwitch");
-    const list = document.getElementsByClassName("list")[0];
+    var btn = document.getElementById("btn-viewSwitch");
+    var list = document.getElementsByClassName("list")[0];
 
     list.classList.add("invisible");
-    setTimeout(async () => {
+    await setTimeout(async () => {
         list.classList.remove("invisible");
         list.classList.toggle("grid");
         list.classList.add("visible");
-        setTimeout(() => {
+        await setTimeout(() => {
             list.classList.remove("visible");
             if (list.classList.contains("grid")) {
                 btn.children[0].src = "./assets/glyphicons-115-list.png"
@@ -71,7 +71,7 @@ const attachHandlers = () => {
 }
 
 const createItem = ({ title, src, numOfTags, added, owner }) => {
-    const element = document.createElement("div");
+    var element = document.createElement("div");
     element.classList.add("list-item")
     element.innerHTML = `<div class="column center">
     <div class="cover-wrapper">
@@ -112,10 +112,10 @@ const fillList = (data) => {
 
 }
 
-const fetchListData = async () => await fetch(dataUri).then(response => response.json())
+const refetchListData = async () => await fetch(dataUri).then(response => response.json())
     .then(data => { listData = data; fillList(data) });
 
 window.onload = async () => {
-    await fetchListData();
+    await refetchListData();
     attachHandlers();
 };
