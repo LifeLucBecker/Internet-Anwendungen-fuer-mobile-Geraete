@@ -33,6 +33,7 @@ class ViewController {
             this.mainEl.classList.toggle("myapp-faded");
             this.mainEl.removeEventListener("transitionend", onFadedListener);
             this.headerEl.classList.toggle("myapp-img-list");
+            this.mainEl.classList.toggle("myapp-tiles");
         }
         fadingTrigger.onclick = () => {
             this.mainEl.classList.toggle("myapp-faded");
